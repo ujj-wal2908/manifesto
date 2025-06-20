@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujjwal Sharma for Regional Coordinator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .campaign-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin: 20px 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(45deg, #8B5CF6, #06B6D4);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #F59E0B;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #4F46E5;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .commitments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .commitment-card {
+            background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #3B82F6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commitment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .commitment-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        .commitment-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #1E40AF;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .commitment-desc {
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #F3E8FF, #E9D5FF);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+            border: 2px solid #A855F7;
+        }
+
+        .form-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #8B5CF6, #06B6D4);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .form-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+        }
+
+        .why-vote {
+            background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid #10B981;
+            margin: 30px 0;
+        }
+
+        .why-vote h3 {
+            color: #065F46;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .why-vote ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-vote li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .why-vote li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: linear-gradient(45deg, #1F2937, #374151);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .footer h2 {
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #FDF2F8, #FCE7F3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #EC4899;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #FEF59B, #F59E0B);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #92400E;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .commitments {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="campaign-card">
+            <div class="header">
+                <div class="header-content">
+                    <img src="Namdapha_png .png.jpg "width="100" height="100"style="float:left">
+                    <img src="IITM logo.png" width="100" height="100", style="float: right;">
+                    <h1 class="main-title">Ujjwal for Regional Coordinator</h1>
+                    <p class="subtitle">Together, Connected, Growing</p>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="intro-section">
+                    <img src="ujjwal.jpg.jpg" width="300" height="350", style="display: block;margin-left: auto;margin-right: auto;">
+                    <h2><span class="emoji">👋</span> Hey everyone,</h2>
+                    <p style="margin: 15px 0; font-size: 1.1em;">I'm <strong>Ujjwal Sharma</strong>, currently pursuing the BS in Data Science and Applications from IIT Madras. I'm at the Diploma level in the program, holding a <span class="highlight">CGPA of 9.25</span>.</p>
+                    
+                    <div class="profile-info">
+                        <div class="profile-card">
+                            <h4>📍 Location</h4>
+                            <p>Kanpur, Uttar Pradesh</p>
+                        </div>
+                        <div class="profile-card">
+                            <h4>📧 Contact</h4>
+                            <p>24f2006252@ds.study.iitm.ac.in</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <strong>Profile:</strong> 
+                        <a href="https://ds.study.iitm.ac.in/student/24F2006252" style="color: #EC4899;">https://ds.study.iitm.ac.in/student/24F2006252</a>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title"><span class="emoji">🌟</span> Why I'm Stepping Up</h2>
+                    <p style="font-size: 1.1em; margin-bottom: 15px;">We've all faced the unique challenges of an online, off-campus degree — missing updates, feeling isolated, or not knowing where to go for help. I want to change that.</p>
+                    <p style="font-size: 1.1em;"><strong>If given the chance, I'll ensure that no one in our region feels left behind.</strong> From clear updates and academic support to real, engaging meetups — I'll bring structure and a human touch to everything I do.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title"><span class="emoji">🌱</span> What I'll Do as Your Regional Coordinator</h2>
+                    
+                    <div class="commitments">
+                        <div class="commitment-card">
+                            <h3 class="commitment-title"><span class="emoji">📢</span> Better Communication</h3>
+                            <div class="commitment-desc">
+                                <p>• Weekly updates covering deadlines, forms, events, and course changes</p>
+                                <p>• Simple, structured info — no spam, no clutter</p>
+                            </div>
+                        </div>
+
+                        <div class="commitment-card">
+                            <h3 class="commitment-title"><span class="emoji">🧠</span> Academic Support</h3>
+                            <div class="commitment-desc">
+                                <p>• Peer mentorship setup within the region</p>
+                                <p>• Study groups and shared learning spaces for better collaboration</p>
+                            </div>
+                        </div>
+
+                        <div class="commitment-card">
+                            <h3 class="commitment-title"><span class="emoji">💬</span> A Stronger Student Community</h3>
+                            <div class="commitment-desc">
+                                <p>• Monthly Online Meetups — relaxed, interactive, and useful</p>
+                                <p>• Offline Regional Meetup — so we can finally meet in person!</p>
+                                <p>• Term-wise Feedback Sessions — not just asking, but acting on your input</p>
+                            </div>
+                        </div>
+
+                        <div class="commitment-card">
+                            <h3 class="commitment-title"><span class="emoji">👋</span> Welcoming New Students</h3>
+                            <div class="commitment-desc">
+                                <p>• Smooth onboarding for freshers — explaining everything clearly</p>
+                                <p>• Early mentorship opportunities to help them settle in faster</p>
+                            </div>
+                        </div>
+
+                        <div class="commitment-card">
+                            <h3 class="commitment-title"><span class="emoji">🌸</span> Focus on Well-being</h3>
+                            <div class="commitment-desc">
+                                <p>• Encourage a respectful, safe, and kind environment</p>
+                                <p>• Open communication always — no doubt is too small, no message ignored</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section pulse">
+                    <h2 class="section-title"><span class="emoji">📬</span> I Want to Hear from You</h2>
+                    <p style="font-size: 1.1em; margin-bottom: 20px;">Before anything else, I'd love to hear your thoughts.</p>
+                    <p>I've created a short Google Form where you can share what you want from your RC:</p>
+                    <a href="https://forms.gle/exLPEjxjDS19cKKa6" class="form-link" target="_blank">
+                        👉 Share Your Thoughts (2 minutes)
+                    </a>
+                    <p style="margin-top: 15px; font-style: italic;">Your voice will shape how I serve.</p>
+                </div>
+
+                <div class="why-vote">
+                    <h3>Why Vote Ujjwal Sharma?</h3>
+                    <ul>
+                        <li>I bring clarity, structure, and dedication</li>
+                        <li>I focus on making communication useful, not noisy</li>
+                        <li>I believe in collaborative growth, not just coordination</li>
+                        <li>I'm here to connect, support, and act with you and for you</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer">
+                <h2>Vote Ujjwal Sharma for Regional Coordinator</h2>
+                <p style="font-size: 1.2em; margin: 15px 0;">Let's turn our region into a connected, thriving, and student-first space.</p>
+                <p class="tagline">Disciplined. Dedicated. Driven by Community.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
